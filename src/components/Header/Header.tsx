@@ -1,6 +1,7 @@
 import "./Header.css";
 
 import { useState, useRef, useEffect } from "react";
+import gsap from "gsap";
 
 // Import Icons
 import { IoMdClose } from "react-icons/io";
@@ -101,7 +102,7 @@ export default function Header() {
         <button
           className="nav__toggle"
           id="nav-toggle"
-          aria-label="Togglew menu"
+          aria-label="Toggle menu"
           onClick={toggleMenu}
         >
           <MdMenuOpen />

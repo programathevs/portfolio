@@ -83,7 +83,7 @@ export default function Hero() {
             ))}
           </div>
 
-          <a href="#technologies" className="hero__arrow">
+          <a href="#stack" className="hero__arrow">
             <TiArrowDownThick />
           </a>
         </div>

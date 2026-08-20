@@ -1,5 +1,4 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import {
   EffectCoverflow,
   Pagination,
@@ -12,14 +11,8 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
 import "./ProjectSlider.css";
-
-import habitTracker from "../../assets/images/projects/habit_tracker.png";
-
-import { FaReact, FaLaravel } from "react-icons/fa6";
-
-import { SiTypescript } from "react-icons/si";
-
 import GlassCard from "../GlassCard/GlassCard";
+import { projects } from "../../data/projects";
 
 export default function ProjectSlider() {
   return (
@@ -49,107 +42,32 @@ export default function ProjectSlider() {
           350: {
             slidesPerView: 1,
           },
-
           640: {
             slidesPerView: 1,
             spaceBetween: 20,
           },
-
           1024: {
             slidesPerView: 2,
             spaceBetween: 50,
           },
-
           1600: {
             slidesPerView: 3,
             spaceBetween: 50,
           },
         }}
       >
-        <SwiperSlide>
-          <GlassCard
-            title="Habit Tracker"
-            description="Daily habit tracker"
-            icons={[
-              <FaReact key="react" />,
-              <SiTypescript key="ts" />,
-              <FaLaravel key="laravel" />,
-            ]}
-            color="orange"
-            href="https://github.com/ProfMthLuiz/habit-tracker"
-            image={habitTracker}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <GlassCard
-            title="Habit Tracker"
-            description="Daily habit tracker"
-            icons={[
-              <FaReact key="react" />,
-              <SiTypescript key="ts" />,
-              <FaLaravel key="laravel" />,
-            ]}
-            color="orange"
-            href="https://github.com/ProfMthLuiz/habit-tracker"
-            image={habitTracker}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <GlassCard
-            title="Habit Tracker"
-            description="Daily habit tracker"
-            icons={[
-              <FaReact key="react" />,
-              <SiTypescript key="ts" />,
-              <FaLaravel key="laravel" />,
-            ]}
-            color="orange"
-            href="https://github.com/ProfMthLuiz/habit-tracker"
-            image={habitTracker}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <GlassCard
-            title="Habit Tracker"
-            description="Daily habit tracker"
-            icons={[
-              <FaReact key="react" />,
-              <SiTypescript key="ts" />,
-              <FaLaravel key="laravel" />,
-            ]}
-            color="orange"
-            href="https://github.com/ProfMthLuiz/habit-tracker"
-            image={habitTracker}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <GlassCard
-            title="Habit Tracker"
-            description="Daily habit tracker"
-            icons={[
-              <FaReact key="react" />,
-              <SiTypescript key="ts" />,
-              <FaLaravel key="laravel" />,
-            ]}
-            color="orange"
-            href="https://github.com/ProfMthLuiz/habit-tracker"
-            image={habitTracker}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <GlassCard
-            title="Habit Tracker"
-            description="Daily habit tracker"
-            icons={[
-              <FaReact key="react" />,
-              <SiTypescript key="ts" />,
-              <FaLaravel key="laravel" />,
-            ]}
-            color="orange"
-            href="https://github.com/ProfMthLuiz/habit-tracker"
-            image={habitTracker}
-          />
-        </SwiperSlide>
+        {projects.map((project) => (
+          <SwiperSlide key={project.id}>
+            <GlassCard
+              title={project.title}
+              description={project.description}
+              icons={project.icons}
+              color={project.color}
+              href={project.href}
+              image={project.image}
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </section>
   );
