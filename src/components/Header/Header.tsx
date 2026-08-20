@@ -1,6 +1,7 @@
 import "./Header.css";
 
 import { useState, useRef, useEffect } from "react";
+import gsap from "gsap";
 
 // Import Icons
 import { IoMdClose } from "react-icons/io";
