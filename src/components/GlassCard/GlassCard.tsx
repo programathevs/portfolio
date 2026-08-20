@@ -112,14 +112,24 @@ const GlassCard = ({
         <div className="ux-bottom">
           <div className="ux-project">
             {icons.map((icon, index) => (
-              <button key={index} className="ux-project-btn">
+              <button
+                key={index}
+                type="button"
+                className="ux-project-btn"
+                aria-label="Tecnologia do projeto"
+              >
                 {icon}
               </button>
             ))}
           </div>
 
           <div className="ux-more">
-            <a className="ux-more-btn" href={href} target="_blank">
+            <a
+              className="ux-more-btn"
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <span>Visualizar</span>
             </a>
           </div>

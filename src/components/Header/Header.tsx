@@ -102,7 +102,7 @@ export default function Header() {
         <button
           className="nav__toggle"
           id="nav-toggle"
-          aria-label="Togglew menu"
+          aria-label="Toggle menu"
           onClick={toggleMenu}
         >
           <MdMenuOpen />

@@ -4,14 +4,15 @@ import {
   FaNodeJs,
   FaPhp,
   FaGithub,
-  FaCss,
+  FaCss3Alt,
   FaHtml5,
   FaGitAlt,
 } from "react-icons/fa6";
 import { BsTypescript } from "react-icons/bs";
 import { SiMysql, SiTailwindcss, SiJavascript } from "react-icons/si";
+import type { Skill, AllSkill } from "../types/skill";
 
-export const skills = [
+export const skills: Skill[] = [
   {
     name: "HTML",
     icon: FaHtml5,
@@ -19,7 +20,7 @@ export const skills = [
   },
   {
     name: "CSS",
-    icon: FaCss,
+    icon: FaCss3Alt,
     color: "#1572B6",
   },
   {
@@ -74,7 +75,7 @@ export const skills = [
   },
 ];
 
-export const allSkills = [
+export const allSkills: AllSkill[] = [
   {
     name: "React",
     icon: FaReact,
@@ -87,7 +88,6 @@ export const allSkills = [
     color: "#3178C6",
     width: "150px",
   },
-
   {
     name: "MySQL",
     icon: SiMysql,
@@ -100,7 +100,6 @@ export const allSkills = [
     color: "#777BB4",
     width: "150px",
   },
-
   {
     name: "Laravel",
     icon: FaLaravel,

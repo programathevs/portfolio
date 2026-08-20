@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
-import { skills } from "../../../constants/skills";
+import { skills } from "../../data/skills";
 
 export default function Stack() {
   const stackRef = useRef<HTMLDivElement>(null);

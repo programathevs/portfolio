@@ -16,8 +16,8 @@ import { GrSend } from "react-icons/gr";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { GiPadlock } from "react-icons/gi";
 
-import emailjs from "@emailjs/browser";
-import { allSkills } from "../../../constants/skills";
+import { sendContactEmail } from "../../services/email";
+import { allSkills } from "../../data/skills";
 
 export default function Contact() {
   const [loading, setLoading] = useState(false);
@@ -168,15 +168,10 @@ export default function Contact() {
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!formRef.current) return;
     setLoading(true);
 
-    emailjs
-      .sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        formRef.current!,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
-      )
+    sendContactEmail(formRef.current)
       .then(() => {
         setMessage(true);
         formRef.current?.reset();
