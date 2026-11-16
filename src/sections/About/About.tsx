@@ -65,7 +65,7 @@ export default function About() {
           ".about__pillar",
           {
             opacity: 0,
-            y: 30,
+            y: 0,
             duration: 0.6,
             stagger: 0.12,
             ease: "power2.out",
