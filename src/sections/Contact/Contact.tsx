@@ -238,18 +238,13 @@ export default function Contact() {
             <span className="contact__stack-title">Tecnologias Utilizadas</span>
 
             <div className="contact__badges">
-              {allSkills.map(({ name, icon: Icon, color, width }, index) => (
+              {allSkills.map(({ name, icon: Icon, color }, index) => (
                 <span
                   className="contact__badge"
                   key={`${name}-${index}`}
-                  style={
-                    {
-                      "--color": color,
-                      "--badge-width": width,
-                    } as React.CSSProperties
-                  }
+                  style={{ "--color": color } as React.CSSProperties}
                 >
-                  <Icon className="contact__badge-icon " />
+                  <Icon className="contact__badge-icon" />
                   {name}
                 </span>
               ))}

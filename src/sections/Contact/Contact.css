@@ -121,27 +121,36 @@
 .contact__badges {
   display: flex;
   flex-wrap: wrap;
+  gap: 0.65rem;
   width: 100%;
 }
 
 .contact__badge {
-  display: flex;
-  gap: 5px;
-  justify-content: center;
+  display: inline-flex;
   align-items: center;
-  width: var(--badge-width);
-  font-family: var(--font-body);
-  color: var(--color);
-  padding: 5px 20px;
-  border-radius: 20px;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
   border: 1px solid var(--color);
-  margin: 5px 0px 0px 5px;
+  background: rgba(255, 255, 255, 0.025);
+  font-family: var(--font-body);
+  font-size: 0.825rem;
+  font-weight: 500;
+  color: var(--color);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact__badge:hover {
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 0 16px var(--color);
+  transform: translateY(-2px);
 }
 
 .contact__badge-icon {
-  width: 20px;
-  height: 20px;
+  width: 17px;
+  height: 17px;
   color: var(--color);
+  flex-shrink: 0;
 }
 
 .contact__form {
@@ -175,6 +184,7 @@
   background: none;
   border: 1px solid var(--border-default);
   color: var(--text);
+  font-family: var(--font-body);
   font-size: 1rem;
   border-radius: 5px;
   padding: 15px 20px;
@@ -230,6 +240,17 @@
   background: var(--accent-soft);
   border: 1px solid var(--accent);
   color: var(--accent);
+  font-family: var(--font-title);
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.contact__button:hover {
+  background: var(--accent);
+  color: #040807;
+  box-shadow: 0 4px 20px var(--accent-glow-strong);
 }
 
 .contact__button {

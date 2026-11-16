@@ -17,6 +17,7 @@ interface SectionData {
 const sectionsList: SectionData[] = [
   { id: "hero", label: "Home" },
   { id: "about", label: "About" },
+  { id: "stack", label: "Stack" },
   { id: "projects", label: "Projects" },
   { id: "contact", label: "Contact" },
 ];
@@ -31,12 +32,18 @@ export default function Header() {
     const handleScroll = () => {
       const scrollY = window.scrollY;
 
+      // Garante que ao voltar ao topo a seção hero (Home) sempre fique ativa
+      if (scrollY < 150) {
+        setActiveSection("hero");
+        return;
+      }
+
       sectionsList.forEach(({ id }) => {
         const section = document.getElementById(id);
 
         if (section) {
-          const top = section.offsetTop - 50; // Distância do topo (offset de 50px)
-          const height = section.offsetHeight; // Altura da seção
+          const top = section.offsetTop - 100;
+          const height = section.offsetHeight;
 
           // Verifica se o scroll atual está dentro dos limites da seção
           if (scrollY > top && scrollY <= top + height) {

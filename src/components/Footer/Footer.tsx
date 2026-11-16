@@ -74,10 +74,11 @@ export default function Footer() {
             <FaLinkedin />
           </a>
           <a
-            href="https://github.com/ProfMthLuiz"
+            href="https://github.com/programathevs"
             className="footer-social-link"
             title="GitHub"
             target="_blank"
+            rel="noopener noreferrer"
           >
             <FaGithub />
           </a>

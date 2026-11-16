@@ -46,12 +46,6 @@
   --neon-violet: #c084fc;
   --neon-pink: #f472b6;
   --glass-edge: rgba(255, 255, 255, 0.85);
-
-  /* Bullets */
-  --swiper-pagination-color: var(--accent);
-
-  --swiper-pagination-bullet-inactive-color: #ffffff;
-  --swiper-pagination-bullet-inactive-opacity: 0.35;
 }
 
 *,
@@ -70,11 +64,4 @@ body {
   height: 100%;
   background-color: var(--background);
   scroll-behavior: smooth;
-}
-
-.swiper-pagination-bullet {
-  transition:
-    background-color 0.3s ease,
-    opacity 0.3s ease,
-    transform 0.3s ease !important;
 }
