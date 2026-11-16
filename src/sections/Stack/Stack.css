@@ -1,65 +1,327 @@
+/* ==========================================================
+   STACK SECTION (BENTO GRID - HARMONIZADO & PADRONIZADO)
+   ========================================================== */
+
 .stack {
+  position: relative;
+  padding: 6rem 1.5rem;
+  background-color: var(--background);
+  color: var(--text);
+  overflow: hidden;
+}
+
+.stack__header {
+  max-width: 760px;
+  margin: 0 auto 3.5rem;
+  text-align: center;
+}
+
+.stack__header .section__subtitle {
+  display: inline-block;
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.stack__header .section__title {
+  font-family: var(--font-title);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: var(--white);
+}
+
+.stack__lead {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ==========================================================
+   BENTO GRID LAYOUT (SIMETRIA EM Z)
+   ========================================================== */
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Linha 1: Core Stack ocupa 2 colunas */
+  .bento-card--featured {
+    grid-column: span 2;
+  }
+
+  /* Linha 2: Workflow ocupa 2 colunas */
+  .bento-card--tools {
+    grid-column: span 2;
+  }
+
+  /* Linha 3: Diferencial ocupa a linha inteira */
+  .bento-card--philosophy {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ==========================================================
+   BENTO CARD BASE & SPOTLIGHT
+   ========================================================== */
+
+.bento-card {
+  position: relative;
+  background: linear-gradient(
+    145deg,
+    rgba(22, 22, 22, 0.85),
+    rgba(14, 14, 14, 0.95)
+  );
+  border: 1px solid var(--border-default);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start; /* Evita desalinhamento vertical interno */
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+  backdrop-filter: blur(12px);
+}
+
+.bento-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow:
+    0 16px 36px -12px rgba(0, 0, 0, 0.6),
+    0 0 24px -6px var(--accent-glow);
+}
+
+/* Spotlight dinâmico */
+.bento-card__spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    400px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+    rgba(255, 255, 255, 0.08),
+    transparent 70%
+  );
+  transition: opacity 0.3s ease;
   opacity: 0;
 }
 
-.stack .section__title {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  color: #fff;
+.bento-card:hover .bento-card__spotlight {
+  opacity: 1;
 }
 
-.slider {
-  overflow: hidden;
-  display: flex;
+/* Badges de Categoria */
+.bento-card__badge {
+  display: inline-flex;
   align-items: center;
-  width: 100%;
-  height: 100px;
-  padding: 10px 0;
-}
-
-.track {
-  display: flex;
-  width: max-content;
-  flex-wrap: nowrap;
-}
-
-.skills {
-  flex-shrink: 0;
-  width: 200px;
-  padding: 10px 30px;
-  border-radius: 30px;
-  border: 1px solid var(--color);
+  gap: 0.4rem;
+  width: fit-content;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.bento-card__badge--accent {
+  background: var(--accent-soft);
+  border-color: var(--accent-glow-medium);
+  color: var(--accent-light);
+}
+
+.bento-badge-icon {
+  font-size: 0.95rem;
+  color: var(--accent);
+}
+
+/* ==========================================================
+   CABEÇALHOS DOS CARDS (ALTURA NIVELADA)
+   ========================================================== */
+
+.bento-card__header {
+  margin-bottom: 1.5rem;
   display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: start;
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+  /* Altura mínima padronizada para que os itens internos comecem na mesma linha horizontal */
+  .bento-card:not(.bento-card--philosophy) .bento-card__header {
+    min-height: 85px;
+  }
+}
+
+.bento-card__title {
+  font-family: var(--font-title);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.45rem;
+  line-height: 1.25;
+}
+
+.bento-card__desc {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ==========================================================
+   ITENS INTERNOS PADRONIZADOS (BENTO-ITEM)
+   ========================================================== */
+
+.bento-items-grid--2cols {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+}
+
+@media (min-width: 640px) {
+  .bento-items-grid--2cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.bento-items-grid--1col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.bento-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.95rem 1rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  height: 100%; /* Garante nivelamento perfeito em linhas da grade */
   transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-
-  margin: 0 10px;
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
 }
 
-.skills:hover {
-  transform: scale(1.1);
-  z-index: 10;
-  box-shadow:
-    0 10px 20px rgba(10, 10, 10, 0.2),
-    0 0 15px var(--color);
+.bento-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--brand-color);
+  transform: translateX(4px);
 }
 
-.skills p {
-  color: var(--color);
+.bento-item__icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
 }
 
-.icon {
-  width: 40px;
-  height: 40px;
-  color: var(--color);
+.bento-item__icon {
+  font-size: 1.45rem;
+  color: var(--brand-color);
+  transition: transform 0.3s ease;
+}
+
+.bento-item:hover .bento-item__icon {
+  transform: scale(1.15);
+}
+
+.bento-item__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.bento-item__name {
+  font-family: var(--font-title);
+  font-size: 0.975rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.2rem;
+  line-height: 1.3;
+}
+
+.bento-item__desc {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* ==========================================================
+   PHILOSOPHY CARD (LINHA 3 - FULL WIDTH)
+   ========================================================== */
+
+.bento-card--philosophy {
+  padding: 2.25rem;
+}
+
+.bento-card__header--full {
+  max-width: 900px;
+}
+
+.philosophy-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.philosophy-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.15rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  transition: all 0.25s ease;
+}
+
+.philosophy-tag:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent-light);
+  transform: translateY(-2px);
+}
+
+.philosophy-tag-icon {
+  color: var(--accent);
 }
